@@ -1,17 +1,15 @@
 <template>
   <v-container>
-
     <v-row class="text-center">
       <v-col
-        class="mb-5">
+        class="">
         <v-container width="this.innerWidth">
           <div class="d-flex" style="justify-content: center;" id="p5Canvas"></div>
 
         </v-container>
       </v-col>
-      <v-divider/>
       <v-col
-        class="mb-5"
+        class=""
         cols="12"
       >
         <v-container>
@@ -26,10 +24,21 @@
                 <v-container>
                   <v-row no-gutters>
                     <v-col>
-                      <v-color-picker
-                        dot-size="25"
-                        swatches-max-height="200"
-                      ></v-color-picker>
+                      <h5>LED Color:</h5>
+                      <v-container>
+                        <v-row>
+                          <v-col>
+                            <v-btn>Foreground</v-btn>
+                            <v-btn>Background</v-btn>
+                          </v-col>
+                          <v-col>
+                            <v-color-picker
+                              dot-size="25"
+                              swatches-max-height="200"
+                            ></v-color-picker>
+                          </v-col>
+                        </v-row>
+                      </v-container>
                     </v-col>
                     <v-col>
                       <h5>LED Mode:</h5>
@@ -56,8 +65,7 @@
                 </v-container>
               </v-card>
             </v-col>
-            <v-col
-                sm="4">
+            <v-col>
               <v-card
                 class="pa-2"
                 outlined
@@ -70,6 +78,83 @@
                   <v-col>
                     <v-btn>Apply</v-btn>
                   </v-col>
+                </v-row>
+                <v-row>
+                  <v-card-text dense>
+                    <v-subheader>LED Speed</v-subheader>
+                    <v-slider
+                      :tick-labels="ledSpeedText"
+                      :value="[0, 1]"
+                      min="0"
+                      max="4"
+                      ticks="always"
+                      tick-size="4"
+                      dense></v-slider>
+                  </v-card-text>
+                </v-row>
+                <v-row>
+                  <v-card-text dense>
+                    <v-subheader>LED Direction</v-subheader>
+                    <v-container>
+                      <v-row>
+                        <v-col>
+                          <v-btn
+                            elevation="2"
+                            fab
+                            tile
+                            small
+                          >
+                            <v-icon dark>
+                              mdi-arrow-down-thin
+                            </v-icon>
+                          </v-btn>
+                        </v-col>
+                      </v-row>
+                      
+                      <v-row>
+                        <v-col>
+                        <v-btn
+                          elevation="2"
+                          fab
+                          tile
+                          small
+                        >
+                          <v-icon dark>
+                            mdi-arrow-right-thin
+                          </v-icon>
+                        </v-btn>
+                        </v-col>
+                        <v-spacer></v-spacer>
+                        <v-col>
+                          <v-btn
+                            elevation="2"
+                            fab
+                            tile
+                            small
+                          >
+                            <v-icon dark>
+                              mdi-arrow-left-thin
+                            </v-icon>
+                          </v-btn>
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col>
+                          <v-btn
+                            elevation="2"
+                            fab
+                            tile
+                            small
+                          >
+                            <v-icon dark>
+                              mdi-arrow-up-thin
+                            </v-icon>
+                          </v-btn>
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                    
+                  </v-card-text>
                 </v-row>
               </v-card>
             </v-col>
@@ -131,6 +216,13 @@
         {
           text: 'Turn Off',
         },
+      ],
+      ledSpeedText: [
+        'Slow',
+        '',
+        '',
+        '',
+        'Fast',
       ],
     }),
     watch: {
